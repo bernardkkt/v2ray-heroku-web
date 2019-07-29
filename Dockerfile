@@ -3,22 +3,11 @@ FROM debian:sid
 RUN apt update -y \
     	&& apt upgrade -y \
     	&& apt install -y wget unzip uuid qrencode
-
-# openssh
-RUN apt-get update && apt-get install -y openssh-server
-RUN mkdir /var/run/sshd
-RUN echo 'root:root' | chpasswd
-RUN sed -i 's/PermitRootLogin prohibit-password/PermitRootLogin yes/' /etc/ssh/sshd_config
-
-# SSH login fix. Otherwise user is kicked off after login
-RUN sed 's@session\s*required\s*pam_loginuid.so@session optional pam_loginuid.so@g' -i /etc/pam.d/sshd
-
-ENV NOTVISIBLE "in users profile"
-RUN echo "export VISIBLE=now" >> /etc/profile
-
-EXPOSE 22
-CMD ["/usr/sbin/sshd", "-D"]
-# openssh
+        
+RUN echo "net.core.default_qdisc=fq" >> /etc/sysctl.conf
+RUN echo "net.ipv4.tcp_congestion_control=bbr" >> /etc/sysctl.conf
+RUN sysctl -p
+RUN sysctl net.ipv4.tcp_available_congestion_control
 
 ADD entrypoint.sh /entrypoint.sh
 RUN chmod +x /entrypoint.sh
