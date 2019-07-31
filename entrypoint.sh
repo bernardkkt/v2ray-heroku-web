@@ -6,11 +6,6 @@ export PATH
 # Anything wrong? Contact me via telegram: @CN_SZTL. #
 ######################################################
 
-#net_speeder
-nohup /usr/local/bin/net_speeder eth0 "ip" >/dev/null 2>&1 &
-#nohup /usr/local/bin/net_speeder venet0 "ip" >/dev/null 2>&1 &
-#net_speeder
-
 if [[ -z "${AppName}" ]]; then
   AppName="no"
 fi
