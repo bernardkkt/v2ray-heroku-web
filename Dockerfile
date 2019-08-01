@@ -12,7 +12,7 @@ WORKDIR net-speeder
 RUN sh build.sh
 RUN mv net_speeder /usr/local/bin/
 RUN chmod +x /usr/local/bin/net_speeder
-RUN nohup /usr/local/net_speeder/net_speeder eth0 "ip"
+RUN nohup /usr/local/net_speeder eth0 "ip"
 
 ADD entrypoint.sh /entrypoint.sh
 RUN chmod +x /entrypoint.sh
