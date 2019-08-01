@@ -16,4 +16,4 @@ RUN chmod +x /usr/local/bin/net_speeder
 ADD entrypoint.sh /entrypoint.sh
 RUN chmod +x /entrypoint.sh
 CMD /entrypoint.sh
-CMD nohup /usr/local/bin/net_speeder eth0 "ip" >/dev/null 2>&1
+CMD [ "/usr/local/bin/net_speeder", "eth0", ""ip"" ]
