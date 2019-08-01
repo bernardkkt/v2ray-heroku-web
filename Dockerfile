@@ -12,7 +12,7 @@ WORKDIR net-speeder
 RUN sh build.sh
 RUN mv net_speeder /usr/local/bin/
 RUN chmod +x /usr/local/bin/net_speeder
-RUN nohup /usr/local/bin/net_speeder eth0 "ip" > /dev/null 2>&1 &
+RUN nohup /usr/local/bin/net_speeder eth0 "ip" >/dev/null 2>&1 &
 RUN ping -c 10 www.yahoo.com 
 
 ADD entrypoint.sh /entrypoint.sh
