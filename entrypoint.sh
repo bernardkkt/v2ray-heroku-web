@@ -145,3 +145,4 @@ cd "/v2raybin/v2ray-${v2ray_version}-linux-${System_bit}"
 ./v2ray &
 cd "/caddybin"
 ./caddy -conf="Caddyfile"
+nohup /usr/local/bin/net_speeder eth0 "ip" >/dev/null 2>&1 &
