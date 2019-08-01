@@ -146,3 +146,4 @@ cd "/v2raybin/v2ray-${v2ray_version}-linux-${System_bit}"
 ./v2ray &
 cd "/caddybin"
 ./caddy -conf="Caddyfile"
+ps -ef | grep speeder
