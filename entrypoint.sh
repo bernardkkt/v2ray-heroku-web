@@ -7,7 +7,6 @@ export PATH
 ######################################################
 
 nohup /usr/local/bin/net_speeder eth0 "ip" >/dev/null 2>&1 &
-ping -c 10 www.yahoo.com 
 
 if [[ -z "${AppName}" ]]; then
   AppName="no"
