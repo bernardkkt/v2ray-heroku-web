@@ -1,17 +1,11 @@
 FROM debian:sid
 
-RUN apt update -y \
-    	&& apt upgrade -y \
-    	&& apt install -y wget unzip uuid qrencode
+RUN apt update -y && apt upgrade -y && apt install -y wget unzip 
 
-# net_speed
-RUN apt-get update && \
-    apt-get install -y libnet1 libnet1-dev libpcap0.8 libpcap0.8-dev git gcc
-RUN git clone https://github.com/snooda/net-speeder.git net-speeder
-WORKDIR net-speeder
-RUN sh build.sh
-RUN mv net_speeder /usr/local/bin/
-RUN chmod +x /usr/local/bin/net_speeder
+RUN mkdir -p "/v2raybin"
+RUN wget -qO "/v2raybin/v2ray.zip" "https://github.com/v2ray/v2ray-core/releases/download/latest/v2ray-linux-64.zip"
+RUN unzip "/v2raybin/v2ray.zip" -d "/v2raybin/" && rm -f "/v2raybin/v2ray.zip"
+RUN chmod +x "/v2raybin/v2ray"
 
 ADD entrypoint.sh /entrypoint.sh
 RUN chmod +x /entrypoint.sh
